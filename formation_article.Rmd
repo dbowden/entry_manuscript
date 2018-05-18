@@ -1,0 +1,61 @@
+---
+title: "Late to the Party: Why New Rebel Groups Join Ongoing Conflicts"
+author: "David F. Bowden"
+date: "`r paste(format(Sys.time(), '%B'), ' ', as.numeric(format(Sys.time(), '%d')), ',', ' ', format(Sys.time(), '%Y'), sep='')`"
+output:
+    # bookdown::word_document2:
+    #    reference_docx: /Users/david/.pandoc/templates/pandoc.docx
+     bookdown::pdf_book:
+         keep_tex: yes
+         includes:
+             in_header: /Users/david/Dropbox/Dissertation/Document/preamble.tex
+bibliography: /Users/david/Dropbox/library.bib
+biblio-sytle: apsr
+documentclass: article
+link-citations: yes
+fontsize: 12pt
+fontfamily: tgpagella
+geometry: margin=1in
+numbersections: true
+toc: no
+abstract: "Civil wars featuring multiple rebel groups are an unusually severe subset of conflicts. Yet, we know little about why such structures emerge in some conflicts but not others. I argue that repression plays a crucial role in motivating the formation of new rebel groups through two mechanisms. First, it reduces the relative cost of fighting, producing a new pool of rebel recruits. Second, it tends to increase the salience of subnational identities such as ethnicity, frequently leading these new recruits to form new rebel groups rather than join existing ones. Using a sample of a civil conflicts 1946--2015, I show that spikes in repression are associated with an increased probability that new rebel organizations will join the fighting. Furthermore, I show that these newly-formed groups are likelier than others to have close ties to a single ethnic group, consistent with my expectation that repression shapes identities. The results suggest that relations among rebels are closely tied to the experience of civilians during war, and that governments can have a surprisingly large influence over rebel movement structure."
+---
+
+```{r setup, include=F}
+knitr::opts_chunk$set(echo=F, error=F, message=F, warning=F, cache=T, results='asis', tidy=F)
+options(xtable.comment = FALSE)
+```
+
+\doublespacing
+
+```{r child='formation_intro.txt'}
+```
+
+```{r child='formation_lit.txt'}
+```
+
+```{r child='formation_theory.txt'}
+```
+
+```{r child='entry_design.txt'}
+```
+
+```{r child='entry_Results.Rmd'}
+```
+
+<!-- ```{r child='diss_chapter/burma.Rmd'}
+``` -->
+
+```{r child='entry_conclusion.txt'}
+```
+
+# References {-}
+\markboth{REFERENCES}{}
+
+\indent
+
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt}
+
+\singlespacing
