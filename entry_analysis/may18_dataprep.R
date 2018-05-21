@@ -11,8 +11,7 @@ library(readxl)
 library(WDI)
 library(countrycode)
 
-
-load("entry_analysis/master_rebel_yearly.Rdata")
+load("master_rebel_yearly.Rdata")
 
 ucdp.dyad$GWNoA <- as.numeric(as.character(ucdp.dyad$GWNoA))
 

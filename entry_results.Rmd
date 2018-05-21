@@ -8,7 +8,7 @@ In the three models without interaction terms the Change in Human Rights variabl
 
 
 ```{r models}
-library(lmtest)#
+library(lmtest)
 library(pglm)
 library(plm)
 library(texreg)
