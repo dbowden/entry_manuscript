@@ -9,7 +9,7 @@ output:
          keep_tex: yes
          includes:
              in_header: /Users/david/Dropbox/Dissertation/Document/preamble.tex
-bibliography: /Users/david/Dropbox/library.bib
+bibliography: /Users/david/Dropbox/zotero_library.bib
 biblio-sytle: apsr
 documentclass: article
 link-citations: yes
@@ -17,7 +17,7 @@ fontsize: 12pt
 fontfamily: tgpagella
 geometry: margin=1in
 numbersections: true
-toc: no
+toc: false
 abstract: "Civil wars featuring multiple rebel groups are an unusually severe subset of conflicts. Yet, we know little about why such structures emerge in some conflicts but not others. I argue that repression plays a crucial role in motivating the formation of new rebel groups through two mechanisms. First, it reduces the relative cost of fighting, producing a new pool of rebel recruits. Second, it tends to increase the salience of subnational identities such as ethnicity, frequently leading these new recruits to form new rebel groups rather than join existing ones. Using a sample of a civil conflicts 1946--2015, I show that spikes in repression are associated with an increased probability that new rebel organizations will join the fighting. Furthermore, I show that these newly-formed groups are likelier than others to have close ties to a single ethnic group, consistent with my expectation that repression shapes identities. The results suggest that relations among rebels are closely tied to the experience of civilians during war, and that governments can have a surprisingly large influence over rebel movement structure."
 ---
 

@@ -15,6 +15,9 @@ library(texreg)
 library(sjmisc)
 library(sjlabelled)
 
+# import function to make pglm work with texreg
+devtools::source_gist("https://gist.github.com/dbowden/109c66be3c1a267d90a024689b20c4eb")
+
 conflict.year <- read.csv("entry_analysis/conflict_year.csv")
 
 conflict.year$latentmean_diff <- set_label(conflict.year$latentmean_diff, "Change in Human Rights")
