@@ -1,0 +1,16 @@
+\usepackage{setspace}
+\usepackage{longtable}
+
+\usepackage{float}
+\let\origtable\table
+\let\endorigtable\endtable
+\renewenvironment{table}[1][2] {
+    \singlespacing
+    \expandafter\origtable\expandafter[H]
+} {
+    \endorigtable
+}
+
+\raggedbottom
+
+% \setlength{\parskip}{1cm plus4mm minus3mm}

@@ -63,7 +63,7 @@ Ultimately, these results provide strong support for *H1*, as changes in human r
 
 ## Group Composition Results
 
-*H3* predicts that the groups which join ongoing conflicts should be more likely than others to draw their support from a single ethnic group. This proposition is tested in Table \@ref(tab:comp). These analyses use the rebel group as the unit of analysis, with the ethnic composition of the group being the dependent variable. In Model 5 the dependent variable is mono-ethnic composition, in Model 6 it is multi-ethnic composition, and in Model 7 it is non-ethnic composition, meaning the group has no discernible ties to a politically-relevant ethnic group. I include two group-level covariates from the Non-State Actor Dataset [@Cunningham2009]: binary indicators of whether the group was active in a previous conflict, and whether it is a transnational organization.
+*H3* predicts that the groups which join ongoing conflicts should be more likely than others to draw their support from a single ethnic group. This proposition is tested in Table \@ref(tab:comp). These analyses use the rebel group as the unit of analysis, with the ethnic composition of the group being the dependent variable. In Model 5 the dependent variable is mono-ethnic composition, in Model 6 it is multi-ethnic composition, and in Model 7 it is non-ethnic composition, meaning the group has no discernible ties to a politically-relevant ethnic group. I include two group-level covariates from the Non-State Actor Dataset [@Cunningham2009]\\: binary indicators of whether the group was active in a previous conflict, and whether it is a transnational organization
 
 ```{r rebethnic}
 group <- read.csv("~/Dropbox/Dissertation/Document/entry_chapter/entry_analysis/group.csv")#
