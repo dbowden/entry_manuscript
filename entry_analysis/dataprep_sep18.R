@@ -429,7 +429,8 @@ country_years$repression <- - country_years$latentmean
 country_years$GWNoLoc <- as.numeric(country_years$GWNoLoc)
 country_years$new_conflict <- ifelse(country_years$n_conflicts > country_years$n_conflicts_lag, 1, 0)
 country_years$new.joiner <- ifelse(country_years$new.joiner==1 & country_years$new_conflict==0, 1, 0)
-country_years$latentmean_diff <- country_years$latentmean_lag - country_years$latentmean_lag2
+country_years$latentmean_diff <- country_years$latentmean - country_years$latentmean_lag
+country_years$latentmean_diff2 <- country_years$latentmean_lag - country_years$latentmean_lag2
 
 #country_years <- subset(country_years, !is.na(GWNoLoc))
 
