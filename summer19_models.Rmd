@@ -1,0 +1,154 @@
+---
+title: "summer19_models"
+author: "David Bowden"
+date: "7/30/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+```
+
+```{r, include=F}
+library(tidyverse)
+library(survival)
+library(texreg)
+
+conflict_year <- read_csv("entry_analysis/conflict_year_summer2019.csv")
+```
+
+<!-- # Compare Package Results -->
+
+```{r, results='asis'}
+# l1 <- glm(new_joiner_forge ~ theta_mean_lag + factor(conflict_id) -1, data=conflict_year, family=binomial("logit"))
+# 
+# l2 <- glm(new_joiner_forge ~ theta_mean_lag + factor(conflict_id) -1, data=conflict_year, family=binomial("probit"))
+# 
+# texreg(list(l1,l2), omit.coef = "factor", custom.model.names = c("logit","probit"))
+```
+
+```{r, include=F}
+# library(bife)
+# 
+# b1 <- bife(new_joiner_forge ~ theta_mean_lag | conflict_id, conflict_year)
+# summary(b1) #matches glm with no intercept
+# 
+# b2 <- bife(new_joiner_forge ~ theta_mean_lag | conflict_id, model="probit", conflict_year)
+# summary(b2)
+```
+
+# Logit with Conflict Effects
+
+This command yields similar results to GLM. BIFE drops perfectly predicted obs, so there is a big difference in the n.
+
+
+```{r, results='asis'}
+c1 <- glm(new_joiner_forge ~ theta_mean_lag + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+c2 <- glm(new_joiner_forge ~ theta_mean_lag + discrim_pct_lag + democ_move + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+c3 <- glm(new_joiner_forge ~ repressive_move + discrim_pct_lag + democ_move + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+c4 <- glm(new_joiner_forge ~ theta_mean_lag + democ_move + cont_civil + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+c5 <- glm(new_joiner_forge ~ theta_mean_lag + democ_move + polity2_lag + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+c6 <- glm(new_joiner_forge ~ theta_mean_lag + democ_move + lgdppc_lag + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+texreg(list(c1,c2,c3,c4,c5,c6), caption = "With Conflict Effects", omit.coef = "factor")
+```
+
+
+
+
+```{r, results='asis'}
+c8 <- glm(new_joiner_forge ~ theta_mean_lag + intensity + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+c9 <- glm(new_joiner_forge ~ theta_mean_lag + n_rebels_lag + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+c10 <- glm(new_joiner_forge ~ theta_mean_lag + internationalized + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+c11 <- glm(new_joiner_forge ~ theta_mean_lag + lgdppc_lag + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+c11b <- glm(new_joiner_forge ~ theta_mean_lag + log(epyear+1) + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+texreg(list(c8,c9,c10,c11,c11b), caption = "With Conflict Effects", omit.coef = "factor")
+```
+
+
+```{r, results='asis'}
+c12 <- glm(new_joiner_forge ~ theta_mean_lag + territory, data=conflict_year, family=binomial("logit"))
+
+c13 <- glm(new_joiner_forge ~ theta_mean_lag + ethfrac, data=conflict_year, family=binomial("logit"))
+
+c14 <- glm(new_joiner_forge ~ theta_mean_lag + mtnest, data=conflict_year, family=binomial("logit"))
+
+c15 <- glm(new_joiner_forge ~ theta_mean_lag + larea, data=conflict_year, family=binomial("logit"))
+
+c16 <- glm(new_joiner_forge ~ theta_mean_lag + lpop_lag, data=conflict_year, family=binomial("logit"))
+
+c16b <- glm(new_joiner_forge ~ theta_mean_lag + epnum, data=conflict_year, family=binomial("logit"))
+
+texreg(list(c12,c13,c14,c15,c16,c16b), caption = "No Fixed Effects", omit.coef = "factor")
+```
+
+```{r, results='asis'}
+c7 <- glm(new_joiner_forge ~ theta_mean_lag + democ_move + discrim_pct_lag + repressive_move + polity2_lag + cont_civil + lgdppc_lag + n_rebels_lag + internationalized + log(epyear+1) + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+c17 <- glm(new_joiner_forge ~ theta_mean_lag + territory + ethfrac + mtnest + larea + lpop_lag + epnum, data=conflict_year, family=binomial("logit"))
+
+c18 <- glm(new_joiner_forge ~ theta_mean_lag + territory + lpop_lag + n_rebels_lag, data=conflict_year, family=binomial("logit"))
+
+c19 <- glm(new_joiner_forge ~ theta_mean_lag + territory + lpop_lag + n_rebels_lag + factor(year) -1, data=conflict_year, family=binomial("logit"))
+
+texreg(list(c7,c17,c18,c19), caption="Combined Models", omit.coef = "factor")
+```
+
+# VDEM Measures
+
+```{r, results='asis'}
+v1 <- glm(new_joiner_forge ~ v2clkill_lag + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+v2 <- glm(new_joiner_forge ~ v2cltort_lag + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+v3 <- glm(new_joiner_forge ~ v2clkill_lag + discrim_pct_lag + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+v4 <- glm(new_joiner_forge ~ v2clkill_lag +  discrim_pct_lag + polity2_lag + repressive_move + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+v5 <- glm(new_joiner_forge ~ v2clkill_lag +  v2cltort_lag + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+
+texreg(list(v1,v2,v3,v4,v5), omit.coef = "factor")  
+```
+
+# Interactions
+
+```{r, results='asis'}
+int1 <- glm(new_joiner_forge ~ theta_mean_lag*discrim_pct_lag + factor(conflict_id) - 1, data=conflict_year, family=binomial("logit"))
+```
+
+
+# IV Probit
+
+```{r, include=F}
+library(ivprobit)
+
+i1 <- ivprobit(new_joiner_forge ~ territory | theta_mean_lag | youth_bulge_lag, conflict_year)
+
+library(ivtools)
+
+#stage 1
+st1 <- glm(theta_mean_lag ~ youth_bulge_lag, data=conflict_year)
+st1b <- glm(theta_mean_lag ~ xconst_lag, data=conflict_year)
+
+#stage 2
+st2 <- glm(new_joiner_forge ~ theta_mean_lag + territory, data=conflict_year, family=binomial("logit"))
+st2b <- glm(new_joiner_forge ~ theta_mean_lag + territory + lpop_lag, data=conflict_year, family=binomial("logit"))
+
+#estimation
+i2 <- ivglm(estmethod = "ts", fitX.LZ = st1, fitY.LX = st2, data=conflict_year, ctrl=F)
+summary(i2)
+
+i2b <- ivglm(estmethod = "ts", fitX.LZ = st1b, fitY.LX = st2, data=conflict_year, ctrl=F)
+summary(i2b)
+```
+
